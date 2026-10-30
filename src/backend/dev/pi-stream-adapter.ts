@@ -254,6 +254,9 @@ function toPiMessage(message: LocalMessage): Message | undefined {
     model: message.model,
     ...(message.responseModel ? { responseModel: message.responseModel } : {}),
     ...(message.responseId ? { responseId: message.responseId } : {}),
+    ...(message.providerThinkingLevel !== undefined
+      ? { providerThinkingLevel: message.providerThinkingLevel }
+      : {}),
     ...(message.diagnostics ? { diagnostics: message.diagnostics } : {}),
     usage: message.usage,
     stopReason: message.stopReason,
@@ -439,6 +442,9 @@ function toLocalAssistantMessage(
     model: message.model,
     ...(message.responseModel ? { responseModel: message.responseModel } : {}),
     ...(message.responseId ? { responseId: message.responseId } : {}),
+    ...(message.providerThinkingLevel !== undefined
+      ? { providerThinkingLevel: message.providerThinkingLevel }
+      : {}),
     ...(message.diagnostics ? { diagnostics: message.diagnostics } : {}),
     usage: message.usage ?? emptyLocalUsage(),
     stopReason: message.stopReason,
